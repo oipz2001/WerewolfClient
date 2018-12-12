@@ -58,6 +58,7 @@ namespace WerewolfClient
             Alive = 15,
             Chat = 16,
             ChatMessage = 17,
+            SignOut = 18,
         }
         public const string ROLE_SEER = "Seer";
         public const string ROLE_AURA_SEER = "Aura Seer";
@@ -369,10 +370,18 @@ namespace WerewolfClient
             {
                 InitilizeModel(server);
                 Player p = new Player(null, login, password, null, null, null, Player.StatusEnum.Offline);
+                if (_player.Id == null)
+                {
+                    Console.WriteLine("Errors");
+                    throw new Exception();
+                }
                 _player = _playerEP.LoginPlayer(p);
+                
+                
                 Console.WriteLine(_player.Session);
                 _event = EventEnum.SignIn;
                 _eventPayloads["Success"] = TRUE;
+               
             } catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
@@ -382,6 +391,19 @@ namespace WerewolfClient
             }
             NotifyAll();
         }
+        public void SignOut()
+        {
+            try
+            {
+                _event = EventEnum.SignOut;
+
+            } catch(Exception ex)
+            {
+
+
+            }
+        
+        }
         public void SignUp(string server, string login, string password)
         {
             try
@@ -389,12 +411,16 @@ namespace WerewolfClient
                 PlayerApi playerEP = new PlayerApi(server);
                 Player p = new Player(null, login, password, null, null, null, Player.StatusEnum.Offline);
                 _player = playerEP.AddPlayer(p);
-
-                Console.WriteLine(_player.Id);
-                _event = EventEnum.SignIn;
                 _eventPayloads["Success"] = TRUE;
+                
+                Console.WriteLine(_player.Id);
+                _event = EventEnum.SignUp;
+                
+                
+                
             } catch (Exception ex)
             {
+                Console.WriteLine("Error");
                 Console.WriteLine(ex.ToString());
                 _event = EventEnum.SignUp;
                 _eventPayloads["Success"] = FALSE;
@@ -417,6 +443,7 @@ namespace WerewolfClient
                 }
                 _event = EventEnum.SignIn;
                 _eventPayloads["Success"] = TRUE;
+                
             }
             catch (Exception ex)
             {
@@ -453,7 +480,7 @@ namespace WerewolfClient
             try
             {
                 ChatMessage message = new ChatMessage(null, _game.Id, _player.Id, v, null);
-                //_chatEP.ChatSessionIDPost(_player.Session, message);
+                _chatEP.ChatSessionIDPost(_player.Session, message);
                 ApiResponse<Object> localResponse =  _chatEP.ChatSessionIDPostWithHttpInfo(_player.Session, message);
                 if (localResponse.StatusCode == 201)
                 {

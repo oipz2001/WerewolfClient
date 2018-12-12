@@ -112,12 +112,14 @@
     <Content Include="Resources\Icon_jailer.png" />
     <Content Include="Resources\Icon_medium.png" />
     <Content Include="Resources\Icon_priest.png" />
+    <Content Include="Resources\Icon_RIP.jpg" />
     <Content Include="Resources\Icon_seer.png" />
     <Content Include="Resources\Icon_serial_killer.png" />
     <Content Include="Resources\Icon_villager.png" />
     <Content Include="Resources\Icon_werewolf.png" />
     <Content Include="Resources\Icon_wolf_seer.png" />
     <Content Include="Resources\Icon_wolf_shaman.png" />
+    <None Include="Resources\Village-4.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

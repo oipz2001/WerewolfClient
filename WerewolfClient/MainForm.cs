@@ -125,7 +125,7 @@ namespace WerewolfClient
                             img = Properties.Resources.Icon_fool;
                             break;
                         case WerewolfModel.ROLE_HEAD_HUNTER:
-                            img = Properties.Resources.Icon_head_hunter;
+                            img = Properties.Resources.Icon_serial_killer;
                             break;
                         case WerewolfModel.ROLE_SERIAL_KILLER:
                             img = Properties.Resources.Icon_serial_killer;
@@ -304,6 +304,12 @@ namespace WerewolfClient
             controller = (WerewolfController)c;
         }
 
+        private void SigOut_Click(object sender, EventArgs e)
+        {
+            WerewolfCommand wcmd = new WerewolfCommand();
+            wcmd.Action = CommandEnum.SignOut;
+            controller.ActionPerformed(wcmd);
+        }
         private void BtnJoin_Click(object sender, EventArgs e)
         {
             WerewolfCommand wcmd = new WerewolfCommand();
@@ -398,6 +404,26 @@ namespace WerewolfClient
                 TbChatInput.Text = "";
                 controller.ActionPerformed(wcmd);
             }
+        }
+
+        private void BtnPlayer3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TbChatBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnPlayer4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

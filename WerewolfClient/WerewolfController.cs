@@ -40,7 +40,8 @@ namespace WerewolfClient
         }
         public override void ActionPerformed(Command cmd)
         {
-            foreach(Model m in mList)
+            
+            foreach (Model m in mList)
             {
                 if (m is WerewolfModel && cmd is WerewolfCommand)
                 {
@@ -57,6 +58,7 @@ namespace WerewolfClient
                             break;
 
                         case WerewolfCommand.CommandEnum.SignOut:
+                            wm.SignOut();
                             break;
 
                         case WerewolfCommand.CommandEnum.JoinGame:

@@ -30,8 +30,11 @@ namespace WerewolfClient
                     case WerewolfModel.EventEnum.SignIn:
                         if (wm.EventPayloads["Success"] == "True")
                         {
+                            
+                            //MessageBox.Show("Sign in successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             _mainForm.Visible = true;
                             this.Visible = false;
+                            
                         }
                         else
                         {
@@ -39,13 +42,15 @@ namespace WerewolfClient
                         }
                         break;
                     case WerewolfModel.EventEnum.SignUp:
+                        
+                        
                         if (wm.EventPayloads["Success"] == "True")
                         {
-                            MessageBox.Show("Sign up successfuly, please login", "Success", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                            MessageBox.Show("Sign up successfuly, please login", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
-                            MessageBox.Show("Login or password incorrect, please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Try another username", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                         break;
                 }
@@ -71,6 +76,16 @@ namespace WerewolfClient
             wcmd.Action = WerewolfCommand.CommandEnum.SignUp;
             wcmd.Payloads = new Dictionary<string, string>() { { "Login", TbLogin.Text}, { "Password",TbPassword.Text}, { "Server", TBServer.Text } };
             controller.ActionPerformed(wcmd);
+        }
+
+        private void TBServer_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
