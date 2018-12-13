@@ -63,6 +63,16 @@ namespace WerewolfClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Day_village {
+            get {
+                object obj = ResourceManager.GetObject("Day-village", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Icon_alpha_werewolf {
             get {
                 object obj = ResourceManager.GetObject("Icon_alpha_werewolf", resourceCulture);
@@ -123,6 +133,16 @@ namespace WerewolfClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Icon_head_hunter {
+            get {
+                object obj = ResourceManager.GetObject("Icon_head_hunter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Icon_jailer {
             get {
                 object obj = ResourceManager.GetObject("Icon_jailer", resourceCulture);
@@ -146,6 +166,16 @@ namespace WerewolfClient.Properties {
         internal static System.Drawing.Bitmap Icon_priest {
             get {
                 object obj = ResourceManager.GetObject("Icon_priest", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_RIP {
+            get {
+                object obj = ResourceManager.GetObject("Icon_RIP", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

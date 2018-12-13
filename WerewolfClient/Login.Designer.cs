@@ -38,25 +38,28 @@
             // 
             // TbLogin
             // 
+            this.TbLogin.BackColor = System.Drawing.Color.White;
+            this.TbLogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TbLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbLogin.Location = new System.Drawing.Point(298, 331);
+            this.TbLogin.Location = new System.Drawing.Point(158, 382);
             this.TbLogin.Name = "TbLogin";
-            this.TbLogin.Size = new System.Drawing.Size(220, 29);
+            this.TbLogin.Size = new System.Drawing.Size(310, 22);
             this.TbLogin.TabIndex = 2;
             // 
             // TbPassword
             // 
+            this.TbPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbPassword.Location = new System.Drawing.Point(298, 422);
+            this.TbPassword.Location = new System.Drawing.Point(158, 449);
             this.TbPassword.Name = "TbPassword";
             this.TbPassword.PasswordChar = '*';
-            this.TbPassword.Size = new System.Drawing.Size(220, 29);
+            this.TbPassword.Size = new System.Drawing.Size(299, 22);
             this.TbPassword.TabIndex = 3;
             // 
             // BtnSignIn
             // 
             this.BtnSignIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSignIn.Location = new System.Drawing.Point(451, 483);
+            this.BtnSignIn.Location = new System.Drawing.Point(360, 614);
             this.BtnSignIn.Name = "BtnSignIn";
             this.BtnSignIn.Size = new System.Drawing.Size(94, 45);
             this.BtnSignIn.TabIndex = 4;
@@ -66,21 +69,24 @@
             // 
             // BtnSignUp
             // 
+            this.BtnSignUp.BackColor = System.Drawing.Color.White;
+            this.BtnSignUp.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.BtnSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSignUp.Location = new System.Drawing.Point(272, 483);
+            this.BtnSignUp.Location = new System.Drawing.Point(134, 614);
             this.BtnSignUp.Name = "BtnSignUp";
             this.BtnSignUp.Size = new System.Drawing.Size(94, 45);
             this.BtnSignUp.TabIndex = 5;
             this.BtnSignUp.Text = "Sign Up";
-            this.BtnSignUp.UseVisualStyleBackColor = true;
+            this.BtnSignUp.UseVisualStyleBackColor = false;
             this.BtnSignUp.Click += new System.EventHandler(this.BtnSignUp_Click);
             // 
             // TBServer
             // 
+            this.TBServer.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TBServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TBServer.Location = new System.Drawing.Point(272, 244);
+            this.TBServer.Location = new System.Drawing.Point(169, 510);
             this.TBServer.Name = "TBServer";
-            this.TBServer.Size = new System.Drawing.Size(273, 29);
+            this.TBServer.Size = new System.Drawing.Size(273, 22);
             this.TBServer.TabIndex = 8;
             this.TBServer.Text = "http://localhost:2343/werewolf/";
             this.TBServer.TextChanged += new System.EventHandler(this.TBServer_TextChanged);
@@ -91,8 +97,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(584, 749);
             this.Controls.Add(this.TBServer);
             this.Controls.Add(this.BtnSignUp);
             this.Controls.Add(this.BtnSignIn);

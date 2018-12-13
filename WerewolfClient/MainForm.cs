@@ -44,8 +44,10 @@ namespace WerewolfClient
             EnableButton(BtnVote, false);
             _myRole = null;
             _isDead = false;
+            pictureBox1.Hide();
         }
 
+        
         private void OnTimerEvent(object sender, EventArgs e)
         {
             WerewolfCommand wcmd = new WerewolfCommand();
@@ -67,12 +69,16 @@ namespace WerewolfClient
         {
             int i = 0;
             foreach (Player player in wm.Players)
-            {
+            {            
                 Controls["GBPlayers"].Controls["BtnPlayer" + i].Text = player.Name;
                 if (player.Name == wm.Player.Name || player.Status != Player.StatusEnum.Alive)
                 {
                     // FIXME, need to optimize this
                     Image img = Properties.Resources.Icon_villager;
+                    /*if(_isDead == true)
+                    {
+                        img = Properties.Resources.Icon_RIP;
+                    }*/
                     string role;
                     if (player.Name == wm.Player.Name)
                     {
@@ -125,7 +131,7 @@ namespace WerewolfClient
                             img = Properties.Resources.Icon_fool;
                             break;
                         case WerewolfModel.ROLE_HEAD_HUNTER:
-                            img = Properties.Resources.Icon_serial_killer;
+                            img = Properties.Resources.Icon_head_hunter;
                             break;
                         case WerewolfModel.ROLE_SERIAL_KILLER:
                             img = Properties.Resources.Icon_serial_killer;
@@ -139,6 +145,7 @@ namespace WerewolfClient
                 i++;
             }
         }
+        
         public void Notify(Model m)
         {
             if (m is WerewolfModel)
@@ -215,11 +222,13 @@ namespace WerewolfClient
                         AddChatMessage("Switch to day time of day #" + wm.EventPayloads["Game.Current.Day"] + ".");
                         _currentPeriod = Game.PeriodEnum.Day;
                         LBPeriod.Text = "Day time of";
+                        night_BG.Hide();
                         break;
                     case EventEnum.SwitchToNightTime:
                         AddChatMessage("Switch to night time of day #" + wm.EventPayloads["Game.Current.Day"] + ".");
                         _currentPeriod = Game.PeriodEnum.Night;
                         LBPeriod.Text = "Night time of";
+                        night_BG.Show();
                         break;
                     case EventEnum.UpdateDay:
                         // TODO  catch parse exception here
@@ -256,6 +265,7 @@ namespace WerewolfClient
                     case EventEnum.YouShotDead:
                         AddChatMessage("You're shot dead by gunner.");
                         _isDead = true;
+                        pictureBox1.Show();
                         break;
                     case EventEnum.OtherShotDead:
                         AddChatMessage(wm.EventPayloads["Game.Target.Name"] + " was shot dead by gunner.");
@@ -265,7 +275,8 @@ namespace WerewolfClient
                         if (wm.EventPayloads["Game.Target.Id"] == null)
                         {
                             _isDead = false;
-                        }
+                            pictureBox1.Hide();
+                        }   
                         break;
                     case EventEnum.ChatMessage:
                         if (wm.EventPayloads["Success"] == WerewolfModel.TRUE)
@@ -404,26 +415,6 @@ namespace WerewolfClient
                 TbChatInput.Text = "";
                 controller.ActionPerformed(wcmd);
             }
-        }
-
-        private void BtnPlayer3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TbChatBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BtnPlayer4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

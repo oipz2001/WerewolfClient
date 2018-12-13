@@ -102,6 +102,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Resources\Day-village.jpg" />
     <Content Include="Resources\Icon_alpha_werewolf.png" />
     <Content Include="Resources\Icon_aura_seer.png" />
     <Content Include="Resources\Icon_bodyguard.png" />
@@ -113,6 +114,7 @@
     <Content Include="Resources\Icon_medium.png" />
     <Content Include="Resources\Icon_priest.png" />
     <Content Include="Resources\Icon_RIP.jpg" />
+    <None Include="Resources\Icon_RIP.png" />
     <Content Include="Resources\Icon_seer.png" />
     <Content Include="Resources\Icon_serial_killer.png" />
     <Content Include="Resources\Icon_villager.png" />
