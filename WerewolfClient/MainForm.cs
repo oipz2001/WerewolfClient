@@ -71,18 +71,18 @@ namespace WerewolfClient
             foreach (Player player in wm.Players)
             {            
                 Controls["GBPlayers"].Controls["BtnPlayer" + i].Text = player.Name;
+
                 if (player.Name == wm.Player.Name || player.Status != Player.StatusEnum.Alive)
                 {
                     // FIXME, need to optimize this
                     Image img = Properties.Resources.Icon_villager;
-                    /*if(_isDead == true)
-                    {
-                        img = Properties.Resources.Icon_RIP;
-                    }*/
                     string role;
                     if (player.Name == wm.Player.Name)
                     {
+                        if (_isDead == true)
+                        img = Properties.Resources.Icon_RIP;
                         role = _myRole;
+ 
                     }
                     else if (player.Role != null)
                     {
@@ -246,6 +246,7 @@ namespace WerewolfClient
                         if (wm.EventPayloads["Success"] == WerewolfModel.TRUE)
                         {
                             AddChatMessage("Your vote is registered.");
+
                         }
                         else
                         {

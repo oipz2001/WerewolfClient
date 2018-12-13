@@ -7,6 +7,8 @@ using WerewolfAPI.Model;
 using System.Threading;
 using Action = WerewolfAPI.Model.Action;
 using WerewolfAPI.Client;
+using System.Windows.Forms;
+
 
 namespace WerewolfClient
 {
@@ -19,6 +21,7 @@ namespace WerewolfClient
         private RoleApi _roleEP;
         private ChatApi _chatEP;
 
+       
         private List<Role> _roles = null;
         private List<Action> _actions = null;
         private Player _player = null;
@@ -396,8 +399,8 @@ namespace WerewolfClient
             try
             {
                 _event = EventEnum.SignOut;
-
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
 
 

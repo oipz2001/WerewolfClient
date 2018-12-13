@@ -31,65 +31,66 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.TbLogin = new System.Windows.Forms.TextBox();
             this.TbPassword = new System.Windows.Forms.TextBox();
-            this.BtnSignIn = new System.Windows.Forms.Button();
-            this.BtnSignUp = new System.Windows.Forms.Button();
             this.TBServer = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // TbLogin
             // 
             this.TbLogin.BackColor = System.Drawing.Color.White;
             this.TbLogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TbLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbLogin.Location = new System.Drawing.Point(158, 382);
+            this.TbLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TbLogin.Location = new System.Drawing.Point(93, 225);
             this.TbLogin.Name = "TbLogin";
-            this.TbLogin.Size = new System.Drawing.Size(310, 22);
+            this.TbLogin.Size = new System.Drawing.Size(179, 15);
             this.TbLogin.TabIndex = 2;
             // 
             // TbPassword
             // 
             this.TbPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbPassword.Location = new System.Drawing.Point(158, 449);
+            this.TbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TbPassword.Location = new System.Drawing.Point(93, 262);
             this.TbPassword.Name = "TbPassword";
             this.TbPassword.PasswordChar = '*';
-            this.TbPassword.Size = new System.Drawing.Size(299, 22);
+            this.TbPassword.Size = new System.Drawing.Size(179, 15);
             this.TbPassword.TabIndex = 3;
-            // 
-            // BtnSignIn
-            // 
-            this.BtnSignIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSignIn.Location = new System.Drawing.Point(360, 614);
-            this.BtnSignIn.Name = "BtnSignIn";
-            this.BtnSignIn.Size = new System.Drawing.Size(94, 45);
-            this.BtnSignIn.TabIndex = 4;
-            this.BtnSignIn.Text = "Sign In";
-            this.BtnSignIn.UseVisualStyleBackColor = true;
-            this.BtnSignIn.Click += new System.EventHandler(this.BtnSignIn_Click);
-            // 
-            // BtnSignUp
-            // 
-            this.BtnSignUp.BackColor = System.Drawing.Color.White;
-            this.BtnSignUp.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.BtnSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSignUp.Location = new System.Drawing.Point(134, 614);
-            this.BtnSignUp.Name = "BtnSignUp";
-            this.BtnSignUp.Size = new System.Drawing.Size(94, 45);
-            this.BtnSignUp.TabIndex = 5;
-            this.BtnSignUp.Text = "Sign Up";
-            this.BtnSignUp.UseVisualStyleBackColor = false;
-            this.BtnSignUp.Click += new System.EventHandler(this.BtnSignUp_Click);
             // 
             // TBServer
             // 
             this.TBServer.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TBServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TBServer.Location = new System.Drawing.Point(169, 510);
+            this.TBServer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TBServer.Location = new System.Drawing.Point(93, 299);
             this.TBServer.Name = "TBServer";
-            this.TBServer.Size = new System.Drawing.Size(273, 22);
+            this.TBServer.Size = new System.Drawing.Size(179, 15);
             this.TBServer.TabIndex = 8;
             this.TBServer.Text = "http://localhost:2343/werewolf/";
-            this.TBServer.TextChanged += new System.EventHandler(this.TBServer_TextChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(66, 358);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(77, 37);
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.BtnSignUp_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(203, 358);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(79, 37);
+            this.pictureBox2.TabIndex = 10;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.BtnSignIn_Click);
             // 
             // Login
             // 
@@ -98,10 +99,10 @@
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(584, 749);
+            this.ClientSize = new System.Drawing.Size(344, 441);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.TBServer);
-            this.Controls.Add(this.BtnSignUp);
-            this.Controls.Add(this.BtnSignIn);
             this.Controls.Add(this.TbPassword);
             this.Controls.Add(this.TbLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -109,7 +110,8 @@
             this.Name = "Login";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.Login_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,8 +120,8 @@
         #endregion
         private System.Windows.Forms.TextBox TbLogin;
         private System.Windows.Forms.TextBox TbPassword;
-        private System.Windows.Forms.Button BtnSignIn;
-        private System.Windows.Forms.Button BtnSignUp;
         private System.Windows.Forms.TextBox TBServer;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
