@@ -131,7 +131,7 @@ namespace WerewolfClient
                             img = Properties.Resources.guard;
                             break;
                         case WerewolfModel.ROLE_JAILER:
-                            img = Properties.Resources.Icon_jailer;
+                            img = Properties.Resources.jailer;
                             break;
                         case WerewolfModel.ROLE_FOOL:
                             img = Properties.Resources.fool;
@@ -143,7 +143,7 @@ namespace WerewolfClient
                             img = Properties.Resources.killer;
                             break;
                         case WerewolfModel.ROLE_GUNNER:
-                            img = Properties.Resources.Icon_gunner;
+                            img = Properties.Resources.gunner;
                             break;
                     }
                     ((Button)Controls["GBPlayers"].Controls["BtnPlayer" + i]).Image = img;

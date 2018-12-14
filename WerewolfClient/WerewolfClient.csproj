@@ -102,6 +102,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Resources\jailer_dead.png" />
+    <None Include="Resources\jailer.png" />
     <None Include="Resources\wolf_shaman.png" />
     <None Include="Resources\wolf_seer_dead.png" />
     <None Include="Resources\wolf_seer.png" />
@@ -132,6 +134,8 @@
     <None Include="Resources\guard_dead.png" />
     <None Include="Resources\hunter.png" />
     <None Include="Resources\hunter_dead.png" />
+    <None Include="Resources\gunner.png" />
+    <None Include="Resources\gunner_dead.png" />
     <Content Include="Resources\Icon_alpha_werewolf.png" />
     <Content Include="Resources\Icon_aura_seer.png" />
     <Content Include="Resources\Icon_bodyguard.png" />
