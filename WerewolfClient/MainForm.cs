@@ -25,7 +25,9 @@ namespace WerewolfClient
         private bool _actionActivated;
         private string _myRole;
         private bool _isDead;
+        private static bool showGun = false;
         private List<Player> players = null;
+        private Login _login;
         public MainForm()
         {
             InitializeComponent();
@@ -44,10 +46,14 @@ namespace WerewolfClient
             EnableButton(BtnVote, false);
             _myRole = null;
             _isDead = false;
-            pictureBox2.Hide();
+            //pictureBox1.Hide();
         }
 
-        
+        public void withLogin(Login login)
+        {
+            _login = login;
+        }
+
         private void OnTimerEvent(object sender, EventArgs e)
         {
             WerewolfCommand wcmd = new WerewolfCommand();
@@ -69,7 +75,7 @@ namespace WerewolfClient
         {
             int i = 0;
             foreach (Player player in wm.Players)
-            {            
+            {
                 Controls["GBPlayers"].Controls["BtnPlayer" + i].Text = player.Name;
 
                 if (player.Name == wm.Player.Name || player.Status != Player.StatusEnum.Alive)
@@ -77,17 +83,12 @@ namespace WerewolfClient
                     // FIXME, need to optimize this
                     Image img = Properties.Resources.Icon_villager;
                     string role;
+
                     if (player.Name == wm.Player.Name)
                     {
-                        if (_isDead == true) //เปลี่ยนรูปเป็น RIP (แต่คนอื่นไม่เห็น)
-                        {
-                            img = Properties.Resources.Icon_RIP;
-                            role = img.ToString();
-                        }
-                        else
-                        {
-                            role = _myRole;
-                        }                
+
+
+                        role = _myRole;
                     }
                     else if (player.Role != null)
                     {
@@ -95,7 +96,8 @@ namespace WerewolfClient
                     }
                     else
                     {
-                        continue;
+                        goto updateDead;
+
                     }
                     switch (role)
                     {
@@ -147,10 +149,24 @@ namespace WerewolfClient
                     }
                     ((Button)Controls["GBPlayers"].Controls["BtnPlayer" + i]).Image = img;
                 }
+                updateDead:
+                if (player.Status != Player.StatusEnum.Alive)
+                {
+
+                    WerewolfCommand wcmd = new WerewolfCommand();
+                    wcmd.Action = CommandEnum.Chat;
+
+
+
+                    Image img = Properties.Resources.Icon_RIP;
+                    ((Button)Controls["GBPlayers"].Controls["BtnPlayer" + i]).Image = img;
+                }
+
                 i++;
             }
         }
-        
+
+
         public void Notify(Model m)
         {
             if (m is WerewolfModel)
@@ -174,7 +190,6 @@ namespace WerewolfClient
                         break;
                     case EventEnum.GameStopped:
                         AddChatMessage("Game is finished, outcome is " + wm.EventPayloads["Game.Outcome"]);
-                        pictureBox2.Show();
                         _updateTimer.Enabled = false;
                         break;
                     case EventEnum.GameStarted:
@@ -272,17 +287,19 @@ namespace WerewolfClient
                     case EventEnum.YouShotDead:
                         AddChatMessage("You're shot dead by gunner.");
                         _isDead = true;
+                       // pictureBox1.Show();
                         break;
                     case EventEnum.OtherShotDead:
+
                         AddChatMessage(wm.EventPayloads["Game.Target.Name"] + " was shot dead by gunner.");
-                        //img.wm.EventPayloads["Game.Target.Neme"].ToString();
                         break;
                     case EventEnum.Alive:
                         AddChatMessage(wm.EventPayloads["Game.Target.Name"] + " has been revived by medium.");
                         if (wm.EventPayloads["Game.Target.Id"] == null)
                         {
                             _isDead = false;
-                        }   
+                           // pictureBox1.Hide();
+                        }
                         break;
                     case EventEnum.ChatMessage:
                         if (wm.EventPayloads["Success"] == WerewolfModel.TRUE)
@@ -310,9 +327,16 @@ namespace WerewolfClient
                             }
                         }
                         break;
+                    case EventEnum.SignOut:
+                        if (wm.EventPayloads["Success"] == "True")
+                        {
+
+                            _login.Visible = true;
+                            this.Visible = false;
+                        }
+                        break;
                 }
                 // need to reset event
-
                 wm.Event = EventEnum.NOP;
             }
         }
@@ -325,7 +349,8 @@ namespace WerewolfClient
         private void SigOut_Click(object sender, EventArgs e)
         {
             WerewolfCommand wcmd = new WerewolfCommand();
-            wcmd.Action = CommandEnum.SignOut;
+            wcmd.Action = WerewolfCommand.CommandEnum.SignOut;
+            wcmd.Payloads = new Dictionary<string, string>();
             controller.ActionPerformed(wcmd);
         }
         private void BtnJoin_Click(object sender, EventArgs e)
@@ -379,7 +404,7 @@ namespace WerewolfClient
         private void BtnPlayerX_Click(object sender, EventArgs e)
         {
             Button btnPlayer = (Button)sender;
-            int index = (int) btnPlayer.Tag;
+            int index = (int)btnPlayer.Tag;
             if (players == null)
             {
                 // Nothing to do here;

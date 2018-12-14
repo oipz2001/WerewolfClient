@@ -21,7 +21,7 @@ namespace WerewolfClient
         private RoleApi _roleEP;
         private ChatApi _chatEP;
 
-       
+
         private List<Role> _roles = null;
         private List<Action> _actions = null;
         private Player _player = null;
@@ -344,7 +344,8 @@ namespace WerewolfClient
                 try
                 {
                     _game = _gameEP.GameSessionSessionIDGet(_player.Session);
-                } catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
                     _game = null;
@@ -358,7 +359,8 @@ namespace WerewolfClient
                 _event = EventEnum.JoinGame;
                 _eventPayloads["Success"] = TRUE;
                 _eventPayloads["Game.Id"] = _game.Id.ToString();
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
                 _event = EventEnum.JoinGame;
@@ -371,21 +373,25 @@ namespace WerewolfClient
         {
             try
             {
+                if (login == "" || password == "") throw new Exception();
                 InitilizeModel(server);
                 Player p = new Player(null, login, password, null, null, null, Player.StatusEnum.Offline);
+                _player = _playerEP.LoginPlayer(p);
                 if (_player.Id == null)
                 {
-                    Console.WriteLine("Errors");
+
                     throw new Exception();
                 }
-                _player = _playerEP.LoginPlayer(p);
-                
-                
-                Console.WriteLine(_player.Session);
-                _event = EventEnum.SignIn;
-                _eventPayloads["Success"] = TRUE;
-               
-            } catch (Exception ex)
+                else
+                {
+
+                    Console.WriteLine(_player.Session);
+                    _event = EventEnum.SignIn;
+                    _eventPayloads["Success"] = TRUE;
+                }
+
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
                 _event = EventEnum.SignIn;
@@ -398,31 +404,33 @@ namespace WerewolfClient
         {
             try
             {
+                _playerEP.LogoutPlayer(_player.Session);
                 _event = EventEnum.SignOut;
+                _eventPayloads["Success"] = TRUE;
             }
             catch (Exception ex)
             {
+                throw new Exception(_player.Session);
 
             }
-        
+            NotifyAll();
         }
         public void SignUp(string server, string login, string password)
         {
+
             try
             {
+                if (login == "" || password == "") throw new Exception();
                 PlayerApi playerEP = new PlayerApi(server);
                 Player p = new Player(null, login, password, null, null, null, Player.StatusEnum.Offline);
                 _player = playerEP.AddPlayer(p);
-                _eventPayloads["Success"] = TRUE;
-                
+
                 Console.WriteLine(_player.Id);
                 _event = EventEnum.SignUp;
-                
-                
-                
-            } catch (Exception ex)
+                _eventPayloads["Success"] = TRUE;
+            }
+            catch (Exception ex)
             {
-                Console.WriteLine("Error");
                 Console.WriteLine(ex.ToString());
                 _event = EventEnum.SignUp;
                 _eventPayloads["Success"] = FALSE;
@@ -445,7 +453,7 @@ namespace WerewolfClient
                 }
                 _event = EventEnum.SignIn;
                 _eventPayloads["Success"] = TRUE;
-                
+
             }
             catch (Exception ex)
             {
@@ -483,7 +491,7 @@ namespace WerewolfClient
             {
                 ChatMessage message = new ChatMessage(null, _game.Id, _player.Id, v, null);
                 _chatEP.ChatSessionIDPost(_player.Session, message);
-                ApiResponse<Object> localResponse =  _chatEP.ChatSessionIDPostWithHttpInfo(_player.Session, message);
+                ApiResponse<Object> localResponse = _chatEP.ChatSessionIDPostWithHttpInfo(_player.Session, message);
                 if (localResponse.StatusCode == 201)
                 {
                     _event = EventEnum.Chat;
