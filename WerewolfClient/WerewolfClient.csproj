@@ -102,7 +102,36 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Resources\wolf_shaman.png" />
+    <None Include="Resources\wolf_seer_dead.png" />
+    <None Include="Resources\wolf_seer.png" />
+    <None Include="Resources\werewolf_dead.png" />
+    <None Include="Resources\werewolf_alpha_dead.png" />
+    <None Include="Resources\werewolf_alpha.png" />
+    <None Include="Resources\werewolf.png" />
+    <None Include="Resources\villager_default.png" />
+    <None Include="Resources\villager_dead.png" />
+    <None Include="Resources\villager.png" />
+    <None Include="Resources\seer_dead.png" />
+    <None Include="Resources\seer.png" />
+    <None Include="Resources\priest_dead.png" />
+    <None Include="Resources\priest.png" />
+    <None Include="Resources\medium_dead.png" />
+    <None Include="Resources\medium.png" />
+    <None Include="Resources\killer_dead.png" />
+    <None Include="Resources\killer.png" />
+    <None Include="Resources\wolf_shaman_dead.png" />
     <None Include="Resources\Day-village.jpg" />
+    <None Include="Resources\aura_seer.png" />
+    <None Include="Resources\aura_seer_dead.png" />
+    <None Include="Resources\doctor.png" />
+    <None Include="Resources\doctor_dead.png" />
+    <None Include="Resources\fool.png" />
+    <None Include="Resources\fool_dead.png" />
+    <None Include="Resources\guard.png" />
+    <None Include="Resources\guard_dead.png" />
+    <None Include="Resources\hunter.png" />
+    <None Include="Resources\hunter_dead.png" />
     <Content Include="Resources\Icon_alpha_werewolf.png" />
     <Content Include="Resources\Icon_aura_seer.png" />
     <Content Include="Resources\Icon_bodyguard.png" />

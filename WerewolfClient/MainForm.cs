@@ -41,7 +41,6 @@ namespace WerewolfClient
             _updateTimer = new Timer();
             _voteActivated = false;
             _actionActivated = false;
-            EnableButton(BtnJoin, true);
             EnableButton(BtnAction, false);
             EnableButton(BtnVote, false);
             _myRole = null;
@@ -102,46 +101,46 @@ namespace WerewolfClient
                     switch (role)
                     {
                         case WerewolfModel.ROLE_SEER:
-                            img = Properties.Resources.Icon_seer;
+                            img = Properties.Resources.seer;
                             break;
                         case WerewolfModel.ROLE_AURA_SEER:
-                            img = Properties.Resources.Icon_aura_seer;
+                            img = Properties.Resources.aura_seer;
                             break;
                         case WerewolfModel.ROLE_PRIEST:
-                            img = Properties.Resources.Icon_priest;
+                            img = Properties.Resources.priest;
                             break;
                         case WerewolfModel.ROLE_DOCTOR:
-                            img = Properties.Resources.Icon_doctor;
+                            img = Properties.Resources.doctor;
                             break;
                         case WerewolfModel.ROLE_WEREWOLF:
-                            img = Properties.Resources.Icon_werewolf;
+                            img = Properties.Resources.werewolf;
                             break;
                         case WerewolfModel.ROLE_WEREWOLF_SEER:
-                            img = Properties.Resources.Icon_wolf_seer;
+                            img = Properties.Resources.wolf_seer;
                             break;
                         case WerewolfModel.ROLE_ALPHA_WEREWOLF:
-                            img = Properties.Resources.Icon_alpha_werewolf;
+                            img = Properties.Resources.werewolf_alpha;
                             break;
                         case WerewolfModel.ROLE_WEREWOLF_SHAMAN:
-                            img = Properties.Resources.Icon_wolf_shaman;
+                            img = Properties.Resources.wolf_shaman;
                             break;
                         case WerewolfModel.ROLE_MEDIUM:
-                            img = Properties.Resources.Icon_medium;
+                            img = Properties.Resources.medium;
                             break;
                         case WerewolfModel.ROLE_BODYGUARD:
-                            img = Properties.Resources.Icon_bodyguard;
+                            img = Properties.Resources.guard;
                             break;
                         case WerewolfModel.ROLE_JAILER:
                             img = Properties.Resources.Icon_jailer;
                             break;
                         case WerewolfModel.ROLE_FOOL:
-                            img = Properties.Resources.Icon_fool;
+                            img = Properties.Resources.fool;
                             break;
                         case WerewolfModel.ROLE_HEAD_HUNTER:
-                            img = Properties.Resources.Icon_head_hunter;
+                            img = Properties.Resources.hunter;
                             break;
                         case WerewolfModel.ROLE_SERIAL_KILLER:
-                            img = Properties.Resources.Icon_serial_killer;
+                            img = Properties.Resources.killer;
                             break;
                         case WerewolfModel.ROLE_GUNNER:
                             img = Properties.Resources.Icon_gunner;
@@ -152,21 +151,14 @@ namespace WerewolfClient
                 updateDead:
                 if (player.Status != Player.StatusEnum.Alive)
                 {
-
                     WerewolfCommand wcmd = new WerewolfCommand();
                     wcmd.Action = CommandEnum.Chat;
-
-
-
                     Image img = Properties.Resources.Icon_RIP;
                     ((Button)Controls["GBPlayers"].Controls["BtnPlayer" + i]).Image = img;
                 }
-
                 i++;
             }
         }
-
-
         public void Notify(Model m)
         {
             if (m is WerewolfModel)
@@ -177,7 +169,7 @@ namespace WerewolfClient
                     case EventEnum.JoinGame:
                         if (wm.EventPayloads["Success"] == WerewolfModel.TRUE)
                         {
-                            BtnJoin.Visible = false;
+                            Btn_Join.Visible = false;
                             AddChatMessage("You're joing the game #" + wm.EventPayloads["Game.Id"] + ", please wait for game start.");
                             _updateTimer.Interval = 1000;
                             _updateTimer.Tick += new EventHandler(OnTimerEvent);
@@ -236,20 +228,19 @@ namespace WerewolfClient
                                 break;
                         }
                         EnableButton(BtnVote, true);
-                        EnableButton(BtnJoin, false);
                         UpdateAvatar(wm);
                         break;
                     case EventEnum.SwitchToDayTime:
                         AddChatMessage("Switch to day time of day #" + wm.EventPayloads["Game.Current.Day"] + ".");
                         _currentPeriod = Game.PeriodEnum.Day;
                         LBPeriod.Text = "Day time of";
-                        night_BG.Hide();
+                        pictureBox3.Hide();
                         break;
                     case EventEnum.SwitchToNightTime:
                         AddChatMessage("Switch to night time of day #" + wm.EventPayloads["Game.Current.Day"] + ".");
                         _currentPeriod = Game.PeriodEnum.Night;
                         LBPeriod.Text = "Night time of";
-                        night_BG.Show();
+                        pictureBox3.Show();
                         break;
                     case EventEnum.UpdateDay:
                         // TODO  catch parse exception here

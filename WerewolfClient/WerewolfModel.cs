@@ -411,7 +411,6 @@ namespace WerewolfClient
             catch (Exception ex)
             {
                 throw new Exception(_player.Session);
-
             }
             NotifyAll();
         }
