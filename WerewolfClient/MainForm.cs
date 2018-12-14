@@ -44,7 +44,7 @@ namespace WerewolfClient
             EnableButton(BtnVote, false);
             _myRole = null;
             _isDead = false;
-            pictureBox1.Hide();
+            pictureBox2.Hide();
         }
 
         
@@ -79,10 +79,15 @@ namespace WerewolfClient
                     string role;
                     if (player.Name == wm.Player.Name)
                     {
-                        if (_isDead == true)
-                        img = Properties.Resources.Icon_RIP;
-                        role = _myRole;
- 
+                        if (_isDead == true) //เปลี่ยนรูปเป็น RIP (แต่คนอื่นไม่เห็น)
+                        {
+                            img = Properties.Resources.Icon_RIP;
+                            role = img.ToString();
+                        }
+                        else
+                        {
+                            role = _myRole;
+                        }                
                     }
                     else if (player.Role != null)
                     {
@@ -169,6 +174,7 @@ namespace WerewolfClient
                         break;
                     case EventEnum.GameStopped:
                         AddChatMessage("Game is finished, outcome is " + wm.EventPayloads["Game.Outcome"]);
+                        pictureBox2.Show();
                         _updateTimer.Enabled = false;
                         break;
                     case EventEnum.GameStarted:
@@ -266,17 +272,16 @@ namespace WerewolfClient
                     case EventEnum.YouShotDead:
                         AddChatMessage("You're shot dead by gunner.");
                         _isDead = true;
-                        pictureBox1.Show();
                         break;
                     case EventEnum.OtherShotDead:
                         AddChatMessage(wm.EventPayloads["Game.Target.Name"] + " was shot dead by gunner.");
+                        //img.wm.EventPayloads["Game.Target.Neme"].ToString();
                         break;
                     case EventEnum.Alive:
                         AddChatMessage(wm.EventPayloads["Game.Target.Name"] + " has been revived by medium.");
                         if (wm.EventPayloads["Game.Target.Id"] == null)
                         {
                             _isDead = false;
-                            pictureBox1.Hide();
                         }   
                         break;
                     case EventEnum.ChatMessage:
@@ -307,6 +312,7 @@ namespace WerewolfClient
                         break;
                 }
                 // need to reset event
+
                 wm.Event = EventEnum.NOP;
             }
         }

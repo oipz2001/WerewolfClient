@@ -403,7 +403,6 @@ namespace WerewolfClient
             catch (Exception ex)
             {
 
-
             }
         
         }

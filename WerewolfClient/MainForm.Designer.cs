@@ -61,19 +61,18 @@
             this.BtnPlayer15 = new System.Windows.Forms.Button();
             this.GBPlayers = new System.Windows.Forms.GroupBox();
             this.night_BG = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.GBChat.SuspendLayout();
             this.GBAction.SuspendLayout();
             this.GBStatus.SuspendLayout();
             this.GBPlayers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.night_BG)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // GBChat
             // 
             this.GBChat.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.GBChat.Controls.Add(this.pictureBox1);
             this.GBChat.Controls.Add(this.TbChatBox);
             this.GBChat.Controls.Add(this.TbChatInput);
             this.GBChat.Location = new System.Drawing.Point(413, 12);
@@ -428,6 +427,7 @@
             // GBPlayers
             // 
             this.GBPlayers.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.GBPlayers.Controls.Add(this.pictureBox2);
             this.GBPlayers.Controls.Add(this.BtnPlayer15);
             this.GBPlayers.Controls.Add(this.BtnPlayer14);
             this.GBPlayers.Controls.Add(this.BtnPlayer13);
@@ -462,15 +462,15 @@
             this.night_BG.TabIndex = 11;
             this.night_BG.TabStop = false;
             // 
-            // pictureBox1
+            // pictureBox2
             // 
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(142, 160);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 103);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Location = new System.Drawing.Point(99, 106);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(194, 147);
+            this.pictureBox2.TabIndex = 17;
+            this.pictureBox2.TabStop = false;
             // 
             // MainForm
             // 
@@ -495,7 +495,7 @@
             this.GBStatus.PerformLayout();
             this.GBPlayers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.night_BG)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -533,7 +533,7 @@
         private System.Windows.Forms.Button BtnPlayer15;
         private System.Windows.Forms.GroupBox GBPlayers;
         private System.Windows.Forms.PictureBox night_BG;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 
